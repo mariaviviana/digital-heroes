@@ -2,7 +2,6 @@ const express = require('express');
 
 const fs = require('fs');
 
-
 const app = express();
 
 app.listen(3030, () => console.log('Server running in 3030 port'));
@@ -17,7 +16,7 @@ app.get('/', function(req,res){
 
 // Ruta /heroes ➝ se envía todo el array y Express lo parsea para el browser como JSON :D
 app.get('/heroes', (req, res) => {
-	res.send(' ');
+	res.send(heroes);
 });
 
 // Ruta /heroes/n ➝ se envía el nombre y profesión del héroe solicitado
@@ -25,16 +24,14 @@ app.get('/heroes/:id', (req,res) => {
 	// Acá lo primero será encontrar al héroe que corresponda
 	let heroeId = req.params.id;
 	let heroeBuscado = heroes.find(function(heroe){
-		return heroeId === heroe.id;
+		return heroeId == heroe.id;
 	});
+	
 	if (heroeBuscado){
-		return {
-			nombre: heroeBuscado.nombre,
-			apellido: heroeBuscado.apellido,
-		}
+		res.send(`El nombre del heroe buscado es ${heroeBuscado.nombre} y su profesion es ${heroeBuscado.profesion}`);
 	} else {
-		return "no encontrado";
-	}
+		res.send('Heroe no encontrado');
+	};
 	// Si se encuentra al héroe se envía el nombre y su profesión
 	// Si NO se encuentra se envía el mensaje de no encontrado
 });
