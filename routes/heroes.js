@@ -2,10 +2,10 @@ const express = require('express');
 let router = express.Router();
 const heroesController = require('../controllers/heroesControllers.js');
 
-router.get('/',heroesController);
+router.get('/',heroesController.listado);
 
-router.get('/detalle/:id',heroesController );
+router.get('/detalle/:id',heroesController.detalleId );
 
-router.get('/bio/:id/:ok?', heroesController);
+router.get('/bio/:id/:ok?', heroesController.biografia);
 
 module.exports = router;
