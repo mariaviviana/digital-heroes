@@ -21,7 +21,7 @@ const controllerHeroes = {
             if (frase === 'ok') {
                 res.send(`Mi nombre es ${heroeBuscado.nombre} y mi reseña es ${heroeBuscado.resenia}`);
             } else {
-                res.send('Lamento que no desees saber mas de mi :(');
+                res.send(heroeBuscado.nombre+ ', Lamento que no desees saber mas de mi :(');
             };
         } else {
             res.send('No encontramos un Heroe para mostrarte su biografia');
